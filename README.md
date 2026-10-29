@@ -4,28 +4,51 @@
 
 ## Objectives
 
-The objectives of this exercise is for you to learn:
+The objectives of this exercise are for you to learn how to:
 
+- push a project to a new repository on GitHub and set it as your `origin` remote,
+- create and switch between branches,
 - stage, commit, and push your changes to your `origin` remote repository,
-- create a pull request to merge your changes to the upstream repository,
-- how to fetch updates from the `upstream` remote repository, and
-- how to resolve merge conflicts.
+- create a pull request to merge your changes into your `main` branch, and
+- resolve merge conflicts.
 
 ## Part 1: Add your changes
 
-### Use this template
+### Download the project
 
-![image](./images/image.png)
+For Windows users, use the WSL terminal only. For macOS users, use your preferred terminal.
 
-On the top right, click on the "use this template" button and select "create a new repository".
-
-### Clone the repository
-
-Now, clone your own copy to your local machine to make changes.
+Download and unzip the project, then go into the project folder.
 
 ```sh
-git clone https://github.com/<your-github-username>/students.git
+cd ~
+cd playground
+curl -L -O https://github.com/aie-devops/students/archive/refs/tags/v4.3.0.zip
+unzip v4.3.0.zip
+cd students-4.3.0
 ```
+
+### Create a new repository on GitHub
+
+On GitHub, create a new **empty** repository named `students`. Do not add a README, `.gitignore` or license, as the project already has its own files.
+
+Learn more about [creating a new repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository).
+
+### Push the project to your repository
+
+The zip file does not include any Git history, so you need to turn the folder into a Git repository first. Then add your new GitHub repository as the `origin` remote and push the project to it.
+
+Replace `<your-github-username>` with your GitHub username.
+
+```sh
+git init -b main
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/<your-github-username>/students.git
+git push -u origin main
+```
+
+Refresh your repository page on GitHub. You should see the project files there.
 
 ### Switch to a new branch
 
@@ -82,7 +105,7 @@ python3 -m http.server [port]
 Stage, commit, and push your changes to your remote repository on GitHub.
 
 ```sh
-git add students.json
+git add data/students.json
 git commit -m "Add my name to student directory"
 git push origin <my-new-branch>
 ```
